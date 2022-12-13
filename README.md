@@ -30,7 +30,7 @@ Player is a backend can handle DLNA actions, but also can perform download or vi
 - [ffmpeg](https://ffmpeg.org/)
 - dummy
 
-### Support Clients
+### Supported Clients
 - [x] Bilibili
 - [x] Baidu NetDisk
 - [x] iQiyi
