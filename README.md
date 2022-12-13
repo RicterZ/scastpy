@@ -26,9 +26,9 @@ $ scastpy -l 192.168.1.2 -p ffmpeg -c output_directory=/tmp --loglevel DEBUG
 ### Supported Players
 Player is a backend can handle DLNA actions, but also can perform download or video codec.
 
-- [vlc](https://www.videolan.org/)
-- [ffmpeg](https://ffmpeg.org/)
-- dummy
+- [vlc](https://www.videolan.org/): Provide a user interface to play videos
+- [ffmpeg](https://ffmpeg.org/): Use ffmpeg to download videos
+- dummy: For testing and development
 
 ### Supported Clients
 - [x] Bilibili
