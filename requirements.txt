@@ -1,0 +1,3 @@
+ssdpy
+python-vlc
+pycocoa
