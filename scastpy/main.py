@@ -21,8 +21,8 @@ def cmdline():
     parser.add_option('--config', '-c', action='store', dest='config',
                       help='config string for player')
 
-    parser.add_option('--loglevel', action='store', dest='loglevel',
-                      help='set log level', default='INFO', choices=('DEBUG', 'INFO'))
+    parser.add_option('--loglevel', action='store', dest='loglevel', default='INFO',
+                      help='set logging level for debugging', choices=('DEBUG', 'INFO'))
 
     args, _ = parser.parse_args(sys.argv[1:])
 
@@ -49,7 +49,6 @@ def cmdline():
 
 def main():
     args = cmdline()
-
     player_cls = find_player(args.player)
     ssdp.run(args.host, port=args.port)
     http.run(args.host, port=args.port, player=player_cls(**args.config))

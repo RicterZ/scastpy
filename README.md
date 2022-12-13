@@ -3,18 +3,19 @@ scastpy
 scastpy is a digital media player written by Python, which can receive and handle screencast requests from mobile phone applications.  
 
 ### Usage
-```bash
+```
 Usage: scastpy -l [ip] -p [player]
 
 Options:
   -h, --help            show this help message and exit
   -l HOST, --local=HOST
                         the local ip address
+  --port=PORT           listening port of HTTP service
   -p PLAYER, --player=PLAYER
                         the player to use
   -c CONFIG, --config=CONFIG
                         config string for player
-  --loglevel=LOGLEVEL   set log level
+  --loglevel=LOGLEVEL   set logging level for debugging
 ```
 
 Example: use ffmpeg as player and set output directory.
