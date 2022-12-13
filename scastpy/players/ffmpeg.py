@@ -1,6 +1,5 @@
 import subprocess
 import os
-import sys
 import threading
 
 from urllib.parse import urlparse
@@ -9,6 +8,7 @@ from scastpy.players.base import Player
 
 
 class FFMpeg(Player):
+    name = 'ffmpeg'
 
     uri = None
     filename = None
@@ -16,7 +16,8 @@ class FFMpeg(Player):
 
     def __init__(self, output_directory='.', *args, **kwargs):
         try:
-            subprocess.Popen(['ffmpeg', '-version'], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+            subprocess.Popen(['ffmpeg', '-version'], stderr=subprocess.DEVNULL,
+                             stdout=subprocess.DEVNULL)
         except Exception as e:
             logger.error('ffmpeg command not found, this player maybe not usable')
             logger.debug(e)

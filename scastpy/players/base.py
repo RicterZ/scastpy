@@ -5,10 +5,14 @@ from scastpy.utils.templates import RESPONSE_TEMPLATE
 
 
 class Player(object):
+    name = None
+
     MATCH_COMMAND = re.compile('\{(.*?)\}(.*)')
 
     def __init__(self, *args, **kwargs):
-        logger.info('player {} loaded successfully'.format(self.__class__.__name__))
+        if self.name is None:
+            raise Exception('player name not be set')
+        logger.info('player {} loaded successfully'.format(self.name))
 
     def make_response(self, command, namespace, response):
         if response is None:

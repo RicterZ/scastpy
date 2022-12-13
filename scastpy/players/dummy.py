@@ -3,6 +3,12 @@ from scastpy.utils.logging import logger
 
 
 class DummyPlayer(Player):
+    name = 'dummy'
+
+    def __init__(self, *args, **kwargs):
+        logger.debug('dummy player: config {}'.format(kwargs))
+        super().__init__(*args, **kwargs)
+
     def stop(self):
         logger.info('dummy player: stopped')
 

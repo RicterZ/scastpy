@@ -5,6 +5,7 @@ from scastpy.utils.logging import logger
 
 
 class VLCPlayer(Player):
+    name = 'vlc'
     media = None
 
     def __init__(self, *args, **kwargs):
