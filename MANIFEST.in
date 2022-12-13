@@ -1,1 +1,1 @@
-*.xml
+include scastpy/templates/*.xml
