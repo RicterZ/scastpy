@@ -1,15 +1,13 @@
-import logging
 import re
 
-
-logger = logging.getLogger()
-MATCH_COMMAND = re.compile('\{.*?\}(.*)')
+from scastpy.utils.logging import logger
 
 
 class Player:
+    MATCH_COMMAND = re.compile('\{.*?\}(.*)')
 
     def execute(self, tag):
-        command = MATCH_COMMAND.findall(tag.tag)[0]
+        command = self.MATCH_COMMAND.findall(tag.tag)[0]
         logger.debug('received player command: {}'.format(command))
         command = command.upper()
 

@@ -1,13 +1,12 @@
 import socket
 import struct
-import logging
 import threading
 
 from uuid import uuid4
 from socketserver import BaseRequestHandler, UDPServer
-from scastpy.templates import SSDP_TEMPLATE
+from scastpy.utils.templates import SSDP_TEMPLATE
+from scastpy.utils.logging import logger
 
-logger = logging.getLogger()
 
 TYPES = (
     'upnp:rootdevice',

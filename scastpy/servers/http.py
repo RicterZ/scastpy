@@ -1,11 +1,9 @@
-import logging
 import threading
 
 from xml.etree import ElementTree as et
 from http.server import BaseHTTPRequestHandler, HTTPServer as HTTPServer_
-from scastpy.templates import HTTP_TEMPLATE, COMMON_RESPONSE
-
-logger = logging.getLogger()
+from scastpy.utils.templates import HTTP_TEMPLATE, COMMON_RESPONSE
+from scastpy.utils.logging import logger
 
 
 class HTTPServer(HTTPServer_):

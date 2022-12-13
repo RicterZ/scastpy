@@ -1,6 +1,7 @@
 import vlc
 
-from scastpy.players.base import Player, logger
+from scastpy.players.base import Player
+from scastpy.utils.logging import logger
 
 
 class VLCPlayer(Player):
