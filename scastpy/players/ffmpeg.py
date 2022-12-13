@@ -19,7 +19,7 @@ class FFMpeg(Player):
             subprocess.Popen(['ffmpeg', '-version'], stderr=subprocess.DEVNULL,
                              stdout=subprocess.DEVNULL)
         except Exception as e:
-            logger.error('ffmpeg command not found, this player maybe not usable')
+            logger.error('ffmpeg command not found, this player maybe not work')
             logger.debug(e)
 
         super().__init__(*args, **kwargs)
