@@ -20,7 +20,7 @@ Options:
 
 Example: use ffmpeg as player and set output directory.
 ```bash
-$ scastpy -l 192.168.1.2 -c output_directory=/tmp --loglevel DEBUG
+$ scastpy -l 192.168.1.2 -p ffmpeg -c output_directory=/tmp --loglevel DEBUG
 ```
 
 ### Supported Players
