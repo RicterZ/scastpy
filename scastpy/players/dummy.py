@@ -14,7 +14,7 @@ class DummyPlayer(Player):
 
     def get_volume(self):
         logger.info('dummy player: get volume')
-        return 'XXX'
+        return 10
 
     def set_volume(self, volume):
         logger.info('dummy player: set volume to {}'.format(volume))

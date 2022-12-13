@@ -1,12 +1,12 @@
 import sys
 
 from scastpy.servers import http, ssdp
-from scastpy.players.dummy import DummyPlayer
+from scastpy.players import FFMpeg, DummyPlayer
 
 
 def main(host):
     ssdp.run(host)
-    http.run(host, player=DummyPlayer())
+    http.run(host, player=FFMpeg(output_directory='/Users/ricterz/Desktop/medias'))
 
 
 if __name__ == '__main__':

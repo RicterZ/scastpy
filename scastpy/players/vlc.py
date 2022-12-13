@@ -7,7 +7,8 @@ from scastpy.utils.logging import logger
 class VLCPlayer(Player):
     media = None
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.media = vlc.MediaPlayer()
 
     def set_uri(self, uri):
@@ -24,7 +25,7 @@ class VLCPlayer(Player):
 
     def set_volume(self, volume):
         logger.info('VLC player: set volume to {}'.format(volume))
-        self.media.audio_set_volume(float(volume))
+        self.media.audio_set_volume(int(volume))
 
     def get_volume(self):
         return self.media.audio_get_volume()

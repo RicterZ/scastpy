@@ -52,3 +52,12 @@ USN: {usn}\r
 
 COMMON_RESPONSE = ''
 
+RESPONSE_TEMPLATE = '''<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+  s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+  <s:Body>
+    <u:{ACTION}Response xmlns:u="{NS}">
+        {RESPONSE}
+    </u:{ACTION}Response>
+  </s:Body>
+</s:Envelope>'''
+
