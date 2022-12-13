@@ -35,7 +35,7 @@ class SSDPHandler(BaseRequestHandler):
             yield data
 
     def handle(self):
-        logger.debug('received request from {}:{}'.format(*self.client_address))
+        logger.debug('received SSDP request from {}:{}'.format(*self.client_address))
 
         msg, sock = self.request
 
@@ -66,5 +66,5 @@ class SSDPServer(UDPServer):
 
 def run(host, port=8080):
     logger.info('starting SSDP server ...')
-    server = SSDPServer('http://{}:{}/desc.xml'.format(host, port))
+    server = SSDPServer('http://{}:{}/description.xml'.format(host, port))
     threading.Thread(target=server.serve_forever).start()

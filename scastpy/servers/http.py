@@ -1,8 +1,9 @@
+import os.path
 import threading
 
 from xml.etree import ElementTree as et
 from http.server import BaseHTTPRequestHandler, HTTPServer as HTTPServer_
-from scastpy.utils.templates import HTTP_TEMPLATE, COMMON_RESPONSE
+from scastpy.utils.templates import DESC_TEMPLATE, TEMPLATE_DIR
 from scastpy.utils.logging import logger
 
 
@@ -21,7 +22,7 @@ class HTTPServer(HTTPServer_):
 class HTTPHandler(BaseHTTPRequestHandler):
     server = None
 
-    def log_message(self, format, *args):
+    def log_message(self, _, *args):
         logger.debug('received HTTP request: {}'.format(args[0]))
 
     def _set_response(self):
@@ -31,8 +32,19 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         self._set_response()
-        resp = HTTP_TEMPLATE.format(self.server.host, self.server.port).encode()
-        self.wfile.write(resp)
+        if self.path.endswith('ConnectionManager_scpd.xml'):
+            with open(os.path.join(TEMPLATE_DIR, 'ConnectionManager.xml'), 'r') as f:
+                resp = f.read()
+        elif self.path.endswith('RenderingControl_scpd.xml'):
+            with open(os.path.join(TEMPLATE_DIR, 'RenderingControl.xml'), 'r') as f:
+                resp = f.read()
+        elif self.path.endswith('AVTransport_scpd.xml'):
+            with open(os.path.join(TEMPLATE_DIR, 'AVTransport.xml'), 'r') as f:
+                resp = f.read()
+        else:
+            resp = DESC_TEMPLATE.format(self.server.host, self.server.port)
+
+        self.wfile.write(resp.encode())
 
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
@@ -40,9 +52,6 @@ class HTTPHandler(BaseHTTPRequestHandler):
         tree = et.ElementTree(et.fromstring(post_data))
         command = tree.getroot().find('./').find('./')
         response = self.server.player.execute(command)
-        if response is None:
-            response = COMMON_RESPONSE
-
         self._set_response()
         self.wfile.write(str(response).encode())
 
