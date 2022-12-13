@@ -3,16 +3,34 @@ scastpy
 scastpy is a digital media player written by Python, which can receive and handle screencast requests from mobile phone applications.  
 
 ### Usage
+```bash
+Usage: scastpy -l [ip] -p [player]
 
+Options:
+  -h, --help            show this help message and exit
+  -l HOST, --local=HOST
+                        the local ip address
+  -p PLAYER, --player=PLAYER
+                        the player to use
+  -c CONFIG, --config=CONFIG
+                        config string for player
+  --loglevel=LOGLEVEL   set log level
+```
+
+Example: use ffmpeg as player and set output directory.
+```bash
+$ scastpy -l 192.168.1.2 -c output_directory=/tmp --loglevel DEBUG
+```
 
 ### Supported Players
 Player is a backend can handle DLNA actions, but also can perform download or video codec.
 
-- [VLC](https://www.videolan.org/)
-- [FFMpeg](https://ffmpeg.org/)
+- [vlc](https://www.videolan.org/)
+- [ffmpeg](https://ffmpeg.org/)
+- dummy
 
 ### Support Clients
-
 - [x] Bilibili
 - [x] Baidu NetDisk
+- [x] iQiyi
 - [ ] AirPlay

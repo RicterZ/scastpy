@@ -15,6 +15,9 @@ class DummyPlayer(Player):
     def play(self):
         logger.info('dummy player: playing')
 
+    def pause(self):
+        logger.info('dummy player: paused')
+
     def set_uri(self, uri):
         logger.info(uri)
 

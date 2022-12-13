@@ -24,6 +24,9 @@ class VLCPlayer(Player):
         logger.info('VLC player: stopped')
         self.media.stop()
 
+    def pause(self):
+        self.media.pause()
+
     def set_volume(self, volume):
         logger.info('VLC player: set volume to {}'.format(volume))
         self.media.audio_set_volume(int(volume))

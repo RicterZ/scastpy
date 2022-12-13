@@ -30,6 +30,8 @@ class Player(object):
             self.stop()
         elif command == 'PLAY':
             self.play()
+        elif command == 'PAUSE':
+            self.pause()
         elif command == 'SETAVTRANSPORTURI':
             uri = tag.find('./CurrentURI').text.strip()
             self.set_uri(uri)
@@ -52,6 +54,9 @@ class Player(object):
         raise NotImplementedError
 
     def play(self):
+        raise NotImplementedError
+
+    def pause(self):
         raise NotImplementedError
 
     def set_uri(self, uri):

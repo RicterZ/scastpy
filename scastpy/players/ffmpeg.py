@@ -28,6 +28,9 @@ class FFMpeg(Player):
     def stop(self):
         pass
 
+    def pause(self):
+        pass
+
     def get_volume(self):
         return 0
 
