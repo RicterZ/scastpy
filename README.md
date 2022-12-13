@@ -1,6 +1,6 @@
-scastpy
+ScastPy
 =======
-scastpy is a digital media player written by Python, which can receive and handle screencast requests from mobile phone applications.  
+ScastPy is a digital media player written by Python, which can receive and handle screencast requests from mobile phone applications.  
 
 ### Usage
 ```
