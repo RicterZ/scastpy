@@ -3,8 +3,11 @@ import re
 from scastpy.utils.logging import logger
 
 
-class Player:
+class Player(object):
     MATCH_COMMAND = re.compile('\{.*?\}(.*)')
+
+    def __init__(self, *args, **kwargs):
+        pass
 
     def execute(self, tag):
         command = self.MATCH_COMMAND.findall(tag.tag)[0]
@@ -31,24 +34,24 @@ class Player:
             logger.info('unexpected command: {}'.format(tag.tag))
 
     def stop(self):
-        raise NotImplemented
+        raise NotImplementedError
 
     def play(self):
-        raise NotImplemented
+        raise NotImplementedError
 
     def set_uri(self, uri):
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_volume(self):
-        raise NotImplemented
+        raise NotImplementedError
 
     def set_volume(self, volume):
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_transport_info(self):
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_position_info(self):
-        raise NotImplemented
+        raise NotImplementedError
 
 
