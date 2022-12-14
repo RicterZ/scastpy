@@ -20,7 +20,7 @@ TYPES = (
 )
 
 
-def make_payload(uuid, uuid2, location, template):
+def make_payload(uuid, location, template):
     original_usn = 'uuid:{}'.format(uuid)
     for type_ in TYPES:
         if type_ != '':
@@ -30,7 +30,7 @@ def make_payload(uuid, uuid2, location, template):
             usn = original_usn
             st = usn
 
-        data = template.format(location=location, st=st, usn=usn, uuid=uuid2)
+        data = template.format(location=location, st=st, usn=usn)
         data = data.replace('{DATE}', formatdate(timeval=None, localtime=False, usegmt=True))
         yield data
 
@@ -47,14 +47,12 @@ class SSDPHandler(BaseRequestHandler):
         if self.server.uuid is None or self.server.location is None:
             raise Exception('uuid or location not set')
 
-        for data in make_payload(self.server.uuid, self.server.uuid2,
-                                 self.server.location, SSDP_RESPONSE_TEMPLATE):
+        for data in make_payload(self.server.uuid, self.server.location, SSDP_RESPONSE_TEMPLATE):
             sock.sendto(data.encode(), self.client_address)
 
 
 class SSDPServer(UDPServer):
     uuid = None
-    uuid2 = None
     location = None
     allow_reuse_address = True
 
@@ -64,7 +62,6 @@ class SSDPServer(UDPServer):
         if uuid is None:
             self.uuid = str(uuid4())
 
-        self.uuid2 = str(uuid4())
         super(SSDPServer, self).__init__(('', 1900), SSDPHandler, bind_and_activate=False)
         self.socket.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
         self.socket.bind(self.server_address)
@@ -78,8 +75,7 @@ class SSDPServer(UDPServer):
     def auto_discover(self):
         while True:
             logger.debug('sending NOTIFY multicast message ...')
-            for data in make_payload(self.uuid, self.uuid2,
-                                     self.location, SSDP_NOTIFY_TEMPLATE):
+            for data in make_payload(self.uuid, self.location, SSDP_NOTIFY_TEMPLATE):
                 self.socket.sendto(data.encode(), ('239.255.255.250', 1900))
             time.sleep(1)
 

@@ -14,7 +14,6 @@ HOST: 239.255.255.250:1900\r
 CACHE-CONTROL: max-age=66\r
 LOCATION: {location}\r
 OPT: "http://schemas.upnp.org/upnp/1/0/"; ns=01\r
-01-NLS: {uuid}\r
 NT: {st}\r
 NTS: ssdp:alive\r
 SERVER: ScastPy/{VERSION} HTTP/1.0\r
@@ -30,7 +29,6 @@ DATE: {{DATE}}\r
 EXT:\r
 LOCATION: {location}\r
 OPT: "http://schemas.upnp.org/upnp/1/0/"; ns=01\r
-01-NLS: {uuid}\r
 SERVER: ScastPy/{VERSION} HTTP/1.0\r
 X-User-Agent: scastpy\r
 ST: {st}\r
