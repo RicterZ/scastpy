@@ -21,6 +21,7 @@ setup(
     keywords=['DLNA', 'ScreenCast', 'SSDP', 'Media Player'],
     description='A simple digital media player written by Python',
     long_description=long_description(),
+    long_description_content_type='text/markdown',
     url='https://github.com/RicterZ/scastpy',
     download_url='https://github.com/RicterZ/scastpy/tarball/master',
     include_package_data=True,
