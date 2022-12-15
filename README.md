@@ -1,10 +1,10 @@
 ScastPy
 =======
 ScastPy is a digital media player written by Python, which can receive and handle screencast requests from mobile phone applications.  
-![](https://img.shields.io/github/license/ricterz/scastpy.svg)
-![PyPI](https://img.shields.io/pypi/v/scastpy)
 
-![](./images/screenshot1.png)
+![LICENSE](https://img.shields.io/github/license/ricterz/scastpy.svg)
+![PyPI](https://img.shields.io/pypi/v/scastpy)
+![](https://github.com/RicterZ/scastpy/raw/main/images/screenshot1.png)
 
 ### Usage
 ```
